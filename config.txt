@@ -1,0 +1,7 @@
+# Use YAML format
+
+blog:
+ # This is your hexo blog root directory on your PC (Only tested on Windows)
+ location: E:\newblog
+ # This is your directory for .md files
+ posts_location: E:\newblog\source\_posts
