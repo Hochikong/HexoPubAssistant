@@ -8,10 +8,10 @@ from msgbox import Ui_Gen_Dialog
 from about import Ui_About_Dialog
 from HPA_agent.funs import *
 
-NEEDLONGER = '输入不允许长度为0。'
-PUBLISHDONE = '博客内容已发布。请检查“博文状态”等待到“已发布”。'
+NEEDLONGER = '输入不允许长度为0！'
+PUBLISHDONE = '博客内容已发布。\n请检查“博文状态”等待到“已发布”。'
 OPENDONE = '文件已使用默认程序打开，请检查。'
-GENERATING = '正在生成, 请检查“博文状态”等待到“待编辑”。'
+GENERATING = '正在生成, 请关闭当前窗口。\n并检查“博文状态”等待到“待编辑”。'
 EDITALREADY = '已编辑'
 WAITFOREDIT = '待编辑'
 PUBLISHALREADY = '已发布'
