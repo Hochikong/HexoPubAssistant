@@ -1,7 +1,7 @@
 # HexoPubAssistant
 本软件是为了那些使用Hexo搭建博客的懒人而写的博客发布助手程序（兼个人PyQt练习），目前只提供Windows平台的预编译包，其他平台的用户请检查requirements.txt。
 
-## 《HexoPubAssistant使用文档》
+# 《HexoPubAssistant使用文档》
 
 1. 介绍
    此软件是为了免去每次使用hexo发布博客时的繁琐流程，不用每次都手动hexo new，hexo s，hexo s。  
@@ -50,4 +50,4 @@
    “手动扫描全部分类”用于更新“现有博文分类”。
    “打开配置文件”将使用用户系统中默认的程序打开该文件。
 
-## 祝使用愉快
+# 祝使用愉快
