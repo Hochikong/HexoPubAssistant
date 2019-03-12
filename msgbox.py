@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\ckhoi\PycharmProjects\HexoPubAssistant\msgbox.ui'
+# Form implementation generated from reading ui file 'msgbox.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -15,7 +15,7 @@ class Ui_Gen_Dialog(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ICON/hexo logo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Gen_Dialog.setWindowIcon(icon)
-        Gen_Dialog.setStyleSheet("background-color: rgb(233, 233, 225);\n"
+        Gen_Dialog.setStyleSheet("background-color: rgb(243, 242, 238);\n"
 "selection-background-color: rgb(199, 197, 184);\n"
 "font: 57 10pt \"GenWanMin TW TTF Medium\";")
         self.buttonBox = QtWidgets.QDialogButtonBox(Gen_Dialog)

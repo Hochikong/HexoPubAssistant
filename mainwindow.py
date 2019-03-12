@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\ckhoi\PycharmProjects\HexoPubAssistant\mainwindow.ui'
+# Form implementation generated from reading ui file 'mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ICON/hexo logo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("background-color: rgb(233, 233, 225);\n"
+        MainWindow.setStyleSheet("background-color: rgb(243, 242, 238);\n"
 "selection-background-color: rgb(199, 197, 184);\n"
 "font: 57 10pt \"GenWanMin TW TTF Medium\";")
         self.centralwidget = QtWidgets.QWidget(MainWindow)

@@ -27,7 +27,7 @@
     <normaloff>../ICON/hexo logo.ico</normaloff>../ICON/hexo logo.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(233, 233, 225);
+   <string notr="true">background-color: rgb(243, 242, 238);
 selection-background-color: rgb(199, 197, 184);
 font: 57 10pt &quot;GenWanMin TW TTF Medium&quot;;</string>
   </property>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\ckhoi\PycharmProjects\HexoPubAssistant\preview.ui'
+# Form implementation generated from reading ui file 'preview.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -15,7 +15,7 @@ class Ui_Preview_Dialog(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ICON/hexo logo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Preview_Dialog.setWindowIcon(icon)
-        Preview_Dialog.setStyleSheet("background-color: rgb(233, 233, 225);\n"
+        Preview_Dialog.setStyleSheet("background-color: rgb(243, 242, 238);\n"
 "selection-background-color: rgb(199, 197, 184);\n"
 "font: 57 10pt \"GenWanMin TW TTF Medium\";")
         self.buttonBox = QtWidgets.QDialogButtonBox(Preview_Dialog)
@@ -39,7 +39,7 @@ class Ui_Preview_Dialog(object):
 
     def retranslateUi(self, Preview_Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Preview_Dialog.setWindowTitle(_translate("Preview_Dialog", "Blog Preview"))
+        Preview_Dialog.setWindowTitle(_translate("Preview_Dialog", "博客预览"))
         self.label.setText(_translate("Preview_Dialog", "预览地址：(请稍等直到地址显示）"))
 
 
