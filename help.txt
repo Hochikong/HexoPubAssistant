@@ -1,7 +1,7 @@
 《HexoPubAssistant使用文档》
 
 1. 介绍
-   此软件是为了免去每次使用hexo发布博客时的繁琐流程，不用每次都手动hexo new，hexo s，hexo s。
+   此软件是为了免去每次使用hexo发布博客时的繁琐流程，不用每次都手动hexo new，hexo g，hexo s。
    使用前请进入程序目录根据你的hexo本地目录配置config.txt，不然程序会无法正常使用。
    
    本软件使用“源云明体”字体：https://github.com/ButTaiwan/genwan-font。
