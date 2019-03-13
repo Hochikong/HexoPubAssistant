@@ -30,6 +30,7 @@ class HPA:
     def __init__(self):
         self.app = QtWidgets.QApplication(sys.argv)
 
+        # initial all widgets
         self.main_window = QtWidgets.QMainWindow()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_window)
@@ -52,6 +53,13 @@ class HPA:
         self.about_dialog_ui.setupUi(self.about_dialog)
         self.about_dialog_ui.about_page.setText(ABOUT)
 
+        # disable resize
+        self.main_window.setFixedSize(self.main_window.size())
+        self.create_dialog.setFixedSize(self.create_dialog.size())
+        self.preview_dialog.setFixedSize(self.preview_dialog.size())
+        self.universal_msg_dialog.setFixedSize(self.universal_msg_dialog.size())
+        self.about_dialog.setFixedSize(self.about_dialog.size())
+
         # menu bar signal and slot
         self.ui.action.triggered.connect(self.create_new_post)
         self.ui.action_2.triggered.connect(self.preview_post)
@@ -63,11 +71,11 @@ class HPA:
         self.ui.about.triggered.connect(self.show_about)
 
         # load config
-        with open('config.txt', 'r', encoding='utf-8') as configf:
-            self.config = yaml.load(configf)
+        with open('config.txt', 'r', encoding='utf-8') as configfl:
+            self.config = yaml.load(configfl)
         self.current_path = os.getcwd()
 
-        # Thread
+        # Initial Thread
         self.current_process_info = None
         self.query_result = None
         self.cr_thread = CreatePostThread(self.config, self.query_result)
@@ -75,7 +83,7 @@ class HPA:
         self.pr_thread = PreviewPostThread(self.config)
         self.pu_thread = PublishPostThread(self.config)
 
-        # update view
+        # update categories view
 
         try:
             goto_dir(self.config['blog']['location'])  # for test config.txt
