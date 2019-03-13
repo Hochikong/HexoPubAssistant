@@ -36,7 +36,7 @@
    ```
 
    首次使用你需要重新配置程序目录中的config.txt，location选项设置为hexo本地目录，参考程序自带的config的目录设置，
-   posts_location设置为hexo本地目录的source\_posts目录，里面存着的是hexo生成的markdown文件。
+   posts_location设置为hexo本地目录的source\\_posts目录，里面存着的是hexo生成的markdown文件。
    配置完毕重启程序即可。
 
 3. 使用教程
