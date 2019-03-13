@@ -16,6 +16,7 @@ EDITALREADY = '已编辑'
 WAITFOREDIT = '待编辑'
 PUBLISHALREADY = '已发布'
 SCANDONE = '已搜索完毕。'
+NOCONFIG = '你尚未配置任何hexo目录，请查阅帮助文件'
 ABOUT = """
         HexoPublishAssistant
         Copyright 2019 Hochikong
@@ -67,6 +68,7 @@ class HPA:
         self.current_path = os.getcwd()
 
         # Thread
+        self.current_process_info = None
         self.query_result = None
         self.cr_thread = CreatePostThread(self.config, self.query_result)
         self.op_thread = OpenPostThread(self.config, self.query_result)
@@ -75,9 +77,14 @@ class HPA:
 
         # update view
 
-        goto_dir(self.config['blog']['posts_location'])
-        self.all_categories = collect_all_categories()
-        [self.ui.listWidget.addItem(cat) for cat in self.all_categories]
+        try:
+            goto_dir(self.config['blog']['location'])  # for test config.txt
+            goto_dir(self.config['blog']['posts_location'])
+            self.all_categories = collect_all_categories()
+            [self.ui.listWidget.addItem(cat) for cat in self.all_categories]
+        except Exception as e:
+            self.disable_mainwindow_elements(True)
+            self.alert(NOCONFIG)
 
         # show mainwindow
         self.main_window.show()
@@ -145,14 +152,33 @@ class HPA:
 
     # preview post
 
+    def fetch_process_info(self):
+        current = [p.info for p in psutil.process_iter(attrs=['pid', 'name']) if 'node' in p.info['name']]
+        self.current_process_info = [p['pid'] for p in current]  # return a pid list
+
+    def cancel_preview_with_kill(self):
+        self.preview_dialog_ui.lineEdit.clear()
+        old_process_info = set(self.current_process_info)
+        self.fetch_process_info()
+        wait_for_kill = list(set(self.current_process_info) - old_process_info)
+        [os.kill(pid, signal.SIGINT) for pid in wait_for_kill]
+
+    # def handle_process_info_while_preview(self, data):
+    #     self.preview_dialog_ui.lineEdit.setText(data)
+    #     old_process_info = set(self.current_process_info)
+    #     self.fetch_process_info()
+    #     wait_for_kill = list(set(self.current_process_info) - old_process_info)
+    #     self.cancel_preview_with_kill(wait_for_kill)
+
     def preview_post(self):
+        self.fetch_process_info()
         self.pr_thread.start()
         self.pr_thread.previewing.connect(self.preview_dialog_ui.lineEdit.setText)
         self.preview_dialog.show()
         rsp = self.preview_dialog.exec_()
 
         if rsp == QtWidgets.QDialog.Rejected:
-            cancel_preview()
+            self.cancel_preview_with_kill()
 
     # publish post
 
@@ -189,6 +215,14 @@ class HPA:
     def show_help(self):
         goto_dir(self.current_path)
         open_file('help', '.txt')
+
+    # use to disable all btn before you config
+    def disable_mainwindow_elements(self, status):
+        if status is True:
+            self.ui.action.setDisabled(status)
+            self.ui.action_2.setDisabled(status)
+            self.ui.action_3.setDisabled(status)
+            self.ui.scan_categories.setDisabled(status)
 
 
 class CreatePostThread(QtCore.QThread):
@@ -237,8 +271,8 @@ class PreviewPostThread(QtCore.QThread):
 
     def run(self):
         goto_dir(self.config['blog']['location'])
-        addr = preview()
-        self.previewing.emit(addr)
+        cont = preview()
+        self.previewing.emit(cont)
 
 
 class PublishPostThread(QtCore.QThread):

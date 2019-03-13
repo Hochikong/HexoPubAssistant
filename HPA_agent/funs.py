@@ -60,15 +60,22 @@ def preview():
     subprocess.Popen("hexo s", shell=True)
     time.sleep(4)
     return 'http://localhost:4000'
+    # current = [p.info for p in psutil.process_iter(attrs=['pid', 'name']) if 'node' in p.info['name']]
+    # tmp = [p['pid'] for p in current]
+    # return {'addr': 'http://localhost:4000',
+    #         'current': tmp}
 
 
-def cancel_preview():
+def cancel_preview(old_process_info):
     """
     WARNING: You should not use any nodejs program while you preview
+    :param old_process_info:
     :return:
     """
-    process_info = [p.info for p in psutil.process_iter(attrs=['pid', 'name']) if 'node' in p.info['name']]
-    [os.kill(i['pid'], signal.SIGINT) for i in process_info]
+    current = [p.info for p in psutil.process_iter(attrs=['pid', 'name']) if 'node' in p.info['name']]
+    new_process_info = [p['pid'] for p in current]
+    difference = list(set(new_process_info) - set(old_process_info))
+    [os.kill(i['pid'], signal.SIGINT) for i in difference]
     return
 
 
